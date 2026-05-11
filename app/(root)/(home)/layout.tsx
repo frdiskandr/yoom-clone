@@ -9,7 +9,7 @@ const Homelayout = (props: {children: ReactNode}) => {
       <div className="flex">
       <Sidebar/>
         <section className="flex flex-1 flex-col min-h-full px-6 pb-6 pt-28 
-        max-md:pb-14 sm:px-14 bg-dark-1">
+        max-md:pb-14 sm:px-14 bg-dark-2">
           <div className="w-full">
             {props.children}
           </div>

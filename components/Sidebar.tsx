@@ -13,6 +13,7 @@ type TypeLink = {
 
 const Sidebar = () => {
   const pathName = usePathname();
+  console.log(pathName)
 
   return (
     <section
@@ -22,7 +23,7 @@ const Sidebar = () => {
       <div className="flex flex-1 flex-col gap-6">
         {SideBarLink.map((link: TypeLink) => {
           const isActive =
-            pathName === link.route || pathName.startsWith(link.route);
+            pathName === link.route || pathName.endsWith(link.route);
 
           return (
             <Link
@@ -31,7 +32,7 @@ const Sidebar = () => {
               className={cn(
                 "flex gap-4 items-center p-4 rounded-lg justify-start",
                 {
-                  "bg-blue-100": isActive,
+                  "bg-blue-600": isActive,
                 },
               )}
             >
