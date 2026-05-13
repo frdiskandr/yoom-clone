@@ -5,16 +5,19 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-dark-1: #1C1F2E;
+  --color-dark-1: #1c1f2e;
   --color-dark-2: #161925;
+  --color-sky: #C9DDFF;
+  --color-orange: #FF742E;
+  --color-purple: #830EF9;
+  --color-yelow: #F9A90E;
 }
 
 :root {
- 
 }
 
 @layer utilities {
-  .flex-center{
+  .flex-center {
     @apply flex justify-center items-center;
   }
   .flex-between {
@@ -26,4 +29,12 @@
   html {
     @apply font-sans;
   }
+}
+
+.bg-hero {
+  background-image: url("/images/hero-background.png");
+}
+.glassmorphism {
+  background: rgba(255,255,255, 0.25);
+  backdrop-filter: blur(4px);
 }

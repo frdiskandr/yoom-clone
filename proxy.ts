@@ -1,7 +1,14 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
 const protectedRoute = createRouteMatcher([
-  '(.*)'
+  "/sign-in(.*)",
+  "/sign-up(.*)",
+  "/(.*).png",
+  "/(.*).jpg",
+  "/(.*).jpeg",
+  "/(.*).gif",
+  "/(.*).svg",
+  "/",
 ])
 
 export default clerkMiddleware(async(auth, req) => {
