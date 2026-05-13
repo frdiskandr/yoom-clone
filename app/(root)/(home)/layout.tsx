@@ -1,6 +1,16 @@
 import Navbar from '@/components/Navbar';
 import Sidebar from '@/components/Sidebar';
+import { Metadata } from 'next';
 import React, { ReactNode } from 'react'
+
+export const metadata: Metadata = {
+  title: "yuum",
+  description: "Video meeting",
+  icons: {
+    icon: '/icon/logo.svg'
+  }
+};
+
 
 const Homelayout = (props: {children: ReactNode}) => {
   return (
