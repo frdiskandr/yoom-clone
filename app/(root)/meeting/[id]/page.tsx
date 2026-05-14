@@ -11,7 +11,7 @@ import Loader from "@/components/Loader";
 
 const Meeting = () => {
   const { id } = useParams<{ id: string }>();
-  const { user, isLoaded } = useUser();
+  const { isLoaded } = useUser();
 
   const [SetupComplite, setSetupComplite] = useState<boolean>(false);
 

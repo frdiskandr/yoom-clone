@@ -13,15 +13,11 @@ import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "./ui/button";
 import { LayoutList, User } from "lucide-react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import EndCallButton from "./EndCallButton";
 import Loader from "./Loader";
 
@@ -47,13 +43,14 @@ const CallLayout = ({ layout }: CallLayoutProps) => {
 const MeetingRoom = () => {
   const [layout, setLayout] = useState<CallLayoutType>("speaker-left");
   const [showParticipant, setshowParticipant] = useState<boolean>(false);
-  const searchParams = useSearchParams()
-  const isPersonalRoom = !!searchParams.get('personal')
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const isPersonalRoom = !!searchParams.get("personal");
 
-  const {useCallCallingState} = useCallStateHooks()
-  const callingState = useCallCallingState()
+  const { useCallCallingState } = useCallStateHooks();
+  const callingState = useCallCallingState();
 
-  if(callingState !== CallingState.JOINED) return <Loader/>
+  if (callingState !== CallingState.JOINED) return <Loader />;
 
   return (
     <section className="relative h-screen w-full overflow-hidden pt-4 text-white">
@@ -74,7 +71,11 @@ const MeetingRoom = () => {
         </div>
       </div>
       <div className="absolute bottom-6 left-1/2 z-20 flex w-full -translate-x-1/2 items-center justify-center gap-5 px-4 flex-wrap">
-        <CallControls />
+        <CallControls
+          onLeave={() => {
+            router.push("/");
+          }}
+        />
 
         <DropdownMenu>
           <div className="flex items-center">
@@ -107,10 +108,10 @@ const MeetingRoom = () => {
           }}
         >
           <div className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]">
-            <User size={20} className="text-white"/>
+            <User size={20} className="text-white" />
           </div>
         </button>
-        {!isPersonalRoom && <EndCallButton/>}
+        {!isPersonalRoom && <EndCallButton />}
       </div>
     </section>
   );
